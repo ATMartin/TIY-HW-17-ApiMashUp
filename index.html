@@ -12,7 +12,7 @@
 
   <script type="text/template" data-template-name="user-input">
    <input name="zip-code" class="zip-code" placeholder="Zip Code">
-   <a href="#render/ <%= zip %>">Go!</a> 
+   <a href="#rep/<%= zip %>">Go!</a> 
   </script>
 
   <script type="text/template" data-template-name="display-results">
@@ -21,6 +21,10 @@
     </div>
     <span class="title"><%= rep.name %> "was selected from zip code <%= rep.zipcode %>!"</span>
   </script>
-
+  
+  <script type="text/javascript"src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript"src="bower_components/underscore/underscore.js"></script>
+  <script type="text/javascript"src="bower_components/backbone/backbone.js"></script>
+  <script type="text/javascript"src="js/main.js"></script>
 </body>
 </html>
