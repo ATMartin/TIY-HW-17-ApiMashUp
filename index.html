@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset-"utf-8">
+  <title>Grumpy, Guvnah?</title>
+</head>
+<body>
+  
+  <div class="app-container">
+      <!-- Backbone views will be appended here! -->
+  </div>
+
+  <script type="text/template" data-template-name="user-input">
+   <input name="zip-code" class="zip-code" placeholder="Zip Code">
+   <a href="#render/ <%= zip %>">Go!</a> 
+  </script>
+
+  <script type="text/template" data-template-name="display-results">
+    <div class="legislator-container">
+      <img src="<%= rep.pic %>">
+    </div>
+    <span class="title"><%= rep.name %> "was selected from zip code <%= rep.zipcode %>!"</span>
+  </script>
+
+</body>
+</html>
