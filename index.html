@@ -16,15 +16,16 @@
   </script>
 
   <script type="text/template" data-template-name="display-results">
-    <div class="legislator-container">
-      <img src="<%= rep.pic %>">
-    </div>
-    <span class="title"><%= rep.name %> "was selected from zip code <%= rep.zipcode %>!"</span>
+      <h2>Legislators:</h2>
+      <% _.each(reps, function(rep) { %>
+        <h4><%= rep.get('last_name') %></h4>
+      <% }); %>
   </script>
   
-  <script type="text/javascript"src="bower_components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript"src="bower_components/underscore/underscore.js"></script>
-  <script type="text/javascript"src="bower_components/backbone/backbone.js"></script>
-  <script type="text/javascript"src="js/main.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+  <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+  <script type="text/javascript" src="js/tokens.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
