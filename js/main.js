@@ -1,6 +1,7 @@
 var $appContainer = $('.app-container'),
     $defaultState = $('[data-template-name="user-input"]').text(),
-    $loadedState = $('[data-template-name="display-results"]').text();
+    $loadedState = $('[data-template-name="display-results"]').text(),
+    $weatherOverlay = $('[data-template-name="weather-overlay"]').text();
 
 var RequestModel = Backbone.Model.extend({
   url: function() {
@@ -9,9 +10,9 @@ var RequestModel = Backbone.Model.extend({
   initialize: function() {
     var me = this;
     this.on('change:zip', function() {
-        me.fetch().done(function(data) { 
-          me.set('loc', data.results[0].geometry.location);
-        });
+      me.fetch().done(function(data) { 
+        me.set('loc', data.results[0].geometry.location);
+      });
     });
   }
 });
@@ -25,10 +26,11 @@ var RequestView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
   },
-  submit: function() {
+  submit: function(e) {
+    e.preventDefault();
     var zip = this.$('.zip-code').val();
     this.model.set('zip', zip);
-    window.location = '#reps/' + zip;
+    window.location.hash = 'reps/' + zip;
   },
   render: function() {
     this.$el.html(this.template( {'zip':this.model.get('zip')} ));
@@ -60,10 +62,26 @@ var LegislatorView = Backbone.View.extend({
 });
 
 
-var ForecastModel = Backbone.Model.extend({});
-var ForecastCollections = Backbone.Collection.extend({
+var ForecastModel = Backbone.Model.extend({
+  initialize: function(collection, options) {
+    this.reqModel = options.reqModel;
+  },
   url: function() {
-    return ;
+    // This uses Nodejitsu's CORS Proxy to make life easier. 
+    // http://jsonp.nodejitsu.com/
+    return 'http://jsonp.nodejitsu.com/?url=' + 'https://api.forecast.io/forecast/' + window.forecastAPI + '/' + this.reqModel.get('loc')['lat'] + ',' + this.reqModel.get('loc')['lng']; 
+  },
+  parse: function(forecast) {
+    return forecast.currently;
+  }
+});
+//var ForecastCollections = Backbone.Collection.extend({});
+var ForecastView = Backbone.View.extend({
+  tagName: 'div',
+  className: 'weatherOverlay',
+  template: _.template($weatherOverlay),
+  render: function(weather) {
+    this.$el.html(this.template(this.model.attributes)); 
   }
 });
 
@@ -72,7 +90,9 @@ var AppRouter = Backbone.Router.extend({
     this.req = new RequestModel();
     this.requestView = new RequestView({model: this.req});
     this.collLegislators = new LegislatorCollection([], {reqModel: this.req});
-    this.viewLegislators = new LegislatorView({collection: this.collLegislators});    
+    this.viewLegislators = new LegislatorView({collection: this.collLegislators});
+    this.forecast = new ForecastModel([], {reqModel: this.req});
+    this.viewForecast = new ForecastView({model: this.forecast});  
   },
   routes: {
     '':'index',
@@ -87,15 +107,22 @@ var AppRouter = Backbone.Router.extend({
     var self = this;
     this.req.set('zip', zip);
     this.collLegislators.fetch().done(function(d) {
-      self.viewLegislators.render();
-      console.log(self.viewLegislators.collection.models);
-      console.log(d);
+      self.viewLegislators.render(); 
       $appContainer.html(self.viewLegislators.$el);
+      // The Forecast call MUST BE WITHIN A CALLBACK.
+      // There is a race condition between the Forecast's
+      // .fetch() method and the 'loc' property of the 
+      // RequestModel. Sorry for the render delay. :( 
+      setTimeout( function () { self.forecast.fetch().done(function() { 
+        console.log(self.forecast.get('summary'));
+        self.viewForecast.render();
+        $appContainer.append(self.viewForecast.$el);
+      }, 300);
+      });
     });
   },
   test: function(zip) {
-    req.set('zip', zip);
-    console.log ('Zip set to ' + zip + '!');
+    //Dummy route useful for testing new implementations.
   }
 });
 
