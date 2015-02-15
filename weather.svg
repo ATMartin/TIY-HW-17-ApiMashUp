@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="200px" height="100px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+  <g>
+    <g id="Moon">
+      <path d="M96.7212,8.41716c-0.827918,-0.24697 -1.66565,-0.47258 -2.51249,-0.676156c-3.66965,-0.882163 -7.51041,-1.35059 -11.4652,-1.35059c-25.9599,0 -47.0046,20.1834 -47.0046,45.0809c0,24.8975 21.0447,45.0809 47.0046,45.0809c4.27806,0 8.42264,-0.548128 12.3616,-1.57515l-0.0815784,-0.121749c-16.7007,-5.64911 -28.8266,-23.1706 -28.8266,-43.192c0,-18.9529 10.8662,-35.1456 26.1931,-41.6121c1.31651,-0.555441 2.66594,-1.03912 4.04422,-1.44662" style="fill:#ebebeb;stroke-width:1.33px;stroke:#000;"/>
+    </g>
+  </g>
+</svg>

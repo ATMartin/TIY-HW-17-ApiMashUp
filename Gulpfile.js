@@ -28,7 +28,8 @@ var notifyLiveReload = function(event) {
 }
 
 gulp.task('watch', function() {
-  gulp.watch('styles/*.scss', ['styles']); 
+  gulp.watch('styles/*.scss', ['styles']);
+  gulp.watch('styles/*.css', notifyLiveReload); 
   gulp.watch('*.html', notifyLiveReload);
   gulp.watch('js/*.js', notifyLiveReload); 
 });

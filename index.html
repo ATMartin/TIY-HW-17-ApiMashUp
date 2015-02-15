@@ -3,6 +3,7 @@
 <head>
   <meta charset-"utf-8">
   <title>Grumpy, Guvnah?</title>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
   
@@ -12,11 +13,10 @@
 
   <script type="text/template" data-template-name="user-input">
     <input class="zip-code" placeholder="Zip Code">
-    <a href="#rep/<%= zip %>">Go!</a> 
+    <!-- <a href="#rep/<%= zip %>">Go!</a> --> 
   </script>
 
   <script type="text/template" data-template-name="display-results">
-      <h2>Legislators:</h2>
       <% _.each(reps, function(rep) { %>
         <div class="legislator <%= rep.get('chamber')%>">
           <img src="http://theunitedstates.io/images/congress/225x275/<%= rep.get('bioguide_id') %>.jpg">
@@ -28,11 +28,27 @@
 
   <script type="text/template" data-template-name="weather-overlay">
     <h1><%= summary %></h1>
-  </script>
+        <% if (['clear-night','partly-cloudy-night'].indexOf(icon) > -1) { %>
+      <svg id="moon">
+        <use xlink:href="my.svg#moon"></use>
+      </svg>
+    <% } %>
+    <% if (['clear-day', 'partly-cloudy-day'].indexOf(icon) > -1) { %>
+      <svg id="sun">
+        <use xlink:href="my.svg#sun"></use>
+      </svg>
+    <% } %>
+  <% if (['rain','cloudy','partly-cloudy-day', 'partly-cloudy-night'].indexOf(icon) > -1) { %>
+      <svg id="cloud">
+        <use xlink:href="my.svg#cloud"></use>
+      </svg>
+    <% } %>
+</script>
   
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
   <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+  <script type="text/javascript" src="http://snapsvg.io/assets/js/snap.svg-min.js"></script>
   <script type="text/javascript" src="js/tokens.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>

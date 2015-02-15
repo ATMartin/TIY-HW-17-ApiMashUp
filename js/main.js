@@ -61,7 +61,6 @@ var LegislatorView = Backbone.View.extend({
   }    
 });
 
-
 var ForecastModel = Backbone.Model.extend({
   initialize: function(collection, options) {
     this.reqModel = options.reqModel;
@@ -78,7 +77,7 @@ var ForecastModel = Backbone.Model.extend({
 //var ForecastCollections = Backbone.Collection.extend({});
 var ForecastView = Backbone.View.extend({
   tagName: 'div',
-  className: 'weatherOverlay',
+  className: 'weather-overlay',
   template: _.template($weatherOverlay),
   render: function(weather) {
     this.$el.html(this.template(this.model.attributes)); 

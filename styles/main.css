@@ -5,4 +5,82 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #7F7F7E;
+  text-align: center;
+}
+body .app-container {
+  width: 70%;
+  margin: 20% auto 0 auto;
+  position: relative;
+}
+
+.zip-code {
+  width: 200px;
+  height: 50px;
+  outline: none;
+  border: 1px solid white;
+  background: #7F7F7E;
+  font-size: 30px;
+  box-shadow: 2px 2px 1px #FFDD4C;
+}
+
+.legislator-container {
+  padding-top: 100px;
+}
+
+.legislator {
+  display: inline-block;
+  color: white;
+  margin: 20px;
+}
+.legislator img {
+  border-radius: 50%;
+}
+
+.weather-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: all ease 0.5s;
+          transition: all ease 0.5s;
+}
+.weather-overlay svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  -webkit-transition: all ease 0.5s;
+          transition: all ease 0.5s;
+}
+.weather-overlay svg #moon {
+  top: 50px;
+  left: 50px;
+  background-color: red;
+}
+.weather-overlay svg#cloud use {
+  stroke: #7F7F7E;
+  stroke-width: 2px;
+  fill: rgba(225, 225, 225, 0.9);
+}
+.weather-overlay svg#sun use {
+  stroke: #FFDD4C;
+  stroke-width: 5px;
+  fill: rgba(255, 221, 76, 0.6);
+}
+.weather-overlay:hover #cloud {
+  left: 100px;
+}
+.weather-overlay:hover #moon {
+  -webkit-transform-origin: -5px;
+      -ms-transform-origin: -5px;
+          transform-origin: -5px;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
 }
