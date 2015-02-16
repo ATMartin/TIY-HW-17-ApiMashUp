@@ -1,0 +1,21 @@
+{
+  "name": "grumpyguvnah",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ATMartin/TIY-HW-17-ApiMashUp",
+  "authors": [
+    "Alex Martin <martin.alex.t+github@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.3"
+  }
+}
