@@ -92,10 +92,11 @@ var ForecastView = Backbone.View.extend({
   render: function(weather) {
     this.$el.html(this.template(this.model.attributes));
     var icon = this.model.get('icon');
-    if (new Date().getHours() > 19 || new Date().getHours() < 8) {
+    console.log(icon);
+    if (new Date().getHours() >= 19 || new Date().getHours() <= 8) {
       $('.legislator-container').append("<h2>It's a bad time for a call, but why not send someone an email?</h2>");  
     } else if ( ['clear-day', 'partly-cloudy-day'].indexOf(icon) > -1) {
-      $('.legislators-container').append("<h2>It's a beatufiul day to write a letter to your representatives!</h2>");
+      $('.legislator-container').append("<h2>It's a beautiful day to write a letter to your representatives!</h2>");
     } else if ( ['rain', 'cloudy', 'partly-cloudy-day'].indexOf(icon) > -1) {
       $('.legislator-container').append("<h2>Indoor activities only for now - why not call one of your reps for a chat?</h2>");  
     } 
