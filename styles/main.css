@@ -15,8 +15,18 @@ body {
 }
 body .app-container {
   width: 70%;
-  margin: 20% auto 0 auto;
+  margin: 0 auto;
   position: relative;
+}
+
+.splash h1 {
+  color: white;
+  font-size: 80px;
+  text-shadow: 2px 1px 2px #333, 5px 5px 8px #FFCF00;
+}
+.splash h4 {
+  color: #FFDD4C;
+  font-family: sans-serif;
 }
 
 .zip-code {
@@ -25,12 +35,19 @@ body .app-container {
   outline: none;
   border: 1px solid white;
   background: #7F7F7E;
+  color: white;
+  text-align: center;
   font-size: 30px;
   box-shadow: 2px 2px 1px #FFDD4C;
 }
 
 .legislator-container {
-  padding-top: 100px;
+  padding-top: 150px;
+}
+.legislator-container h2 {
+  font-size: 30px;
+  color: white;
+  text-shadow: 3px 3px 1px #333;
 }
 
 .legislator {
@@ -40,6 +57,20 @@ body .app-container {
 }
 .legislator img {
   border-radius: 50%;
+}
+.legislator h3 {
+  text-shadow: 1px 1px 1px #333, 2px 1px 3px #FFDD4C;
+  font-size: 25px;
+}
+.legislator h4 {
+  font-family: sans-serif;
+  margin: 2px auto;
+}
+.legislator h4 .data {
+  color: #FFDD4C;
+}
+.legislator h4 a {
+  color: #FFDD4C;
 }
 
 .weather-overlay {
@@ -51,6 +82,11 @@ body .app-container {
   -webkit-transition: all ease 0.5s;
           transition: all ease 0.5s;
 }
+.weather-overlay h1 {
+  font-size: 60px;
+  color: white;
+  text-shadow: 4px 2px 2px #333;
+}
 .weather-overlay svg {
   position: absolute;
   top: 0;
@@ -59,28 +95,300 @@ body .app-container {
   -webkit-transition: all ease 0.5s;
           transition: all ease 0.5s;
 }
-.weather-overlay svg #moon {
-  top: 50px;
+.weather-overlay svg#moon {
+  top: 80px;
   left: 50px;
-  background-color: red;
+  stroke: white;
+  stroke-width: 5px;
+  fill: rgba(225, 225, 225, 0.9);
 }
-.weather-overlay svg#cloud use {
+.weather-overlay svg#star-1, .weather-overlay svg#star-2, .weather-overlay svg#star-3, .weather-overlay svg#star-4, .weather-overlay svg#star-5 {
+  position: absolute;
+  stroke: white;
+  stroke-width: 2px;
+  fill: white;
+}
+.weather-overlay svg#star-1 {
+  top: 50px;
+  left: 10%;
+}
+.weather-overlay svg#star-2 {
+  top: 35px;
+  left: 30%;
+}
+.weather-overlay svg#star-3 {
+  top: 30px;
+  left: 60%;
+}
+.weather-overlay svg#star-4 {
+  top: 40px;
+  left: 75%;
+}
+.weather-overlay svg#star-5 {
+  top: 55px;
+  left: 95%;
+}
+.weather-overlay svg.cloud {
+  top: 50px;
+}
+.weather-overlay svg.cloud use {
   stroke: #7F7F7E;
   stroke-width: 2px;
   fill: rgba(225, 225, 225, 0.9);
 }
 .weather-overlay svg#sun use {
+  top: 30px;
   stroke: #FFDD4C;
   stroke-width: 5px;
   fill: rgba(255, 221, 76, 0.6);
 }
-.weather-overlay:hover #cloud {
-  left: 100px;
+.weather-overlay svg#sun use #sun #body {
+  stroke-width: 1px;
 }
-.weather-overlay:hover #moon {
-  -webkit-transform-origin: -5px;
-      -ms-transform-origin: -5px;
-          transform-origin: -5px;
-  -webkit-transform: rotateZ(45deg);
-          transform: rotateZ(45deg);
+
+.floating-1 {
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: bounce-across;
+          animation-name: bounce-across;
+}
+
+.floating-2 {
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: bounce-across;
+          animation-name: bounce-across;
+}
+
+.floating-3 {
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: bounce-across;
+          animation-name: bounce-across;
+}
+
+.rocking {
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-name: rocking;
+          animation-name: rocking;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.twinkle-1 {
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-name: twinkle;
+          animation-name: twinkle;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+}
+
+.twinkle-2 {
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-name: twinkle;
+          animation-name: twinkle;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-delay: 2;
+          animation-delay: 2;
+}
+
+.twinkle-3 {
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-name: twinkle;
+          animation-name: twinkle;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-delay: 1;
+          animation-delay: 1;
+}
+
+.twinkle-4 {
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-name: twinkle;
+          animation-name: twinkle;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-delay: 5;
+          animation-delay: 5;
+}
+
+.twinkle-5 {
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-animation-name: twinkle;
+          animation-name: twinkle;
+  -webkit-animation-duration: 8s;
+          animation-duration: 8s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-delay: 2;
+          animation-delay: 2;
+}
+
+@-webkit-keyframes bounce-across {
+  0%, 100% {
+    top: 50px;
+    left: 0px;
+  }
+  10%, 90% {
+    top: 70px;
+    left: 15%;
+  }
+  20%, 80% {
+    top: 50px;
+    left: 30%;
+  }
+  30%, 70% {
+    top: 70px;
+    left: 45%;
+  }
+  40%, 60% {
+    top: 50px;
+    left: 60%;
+  }
+  50% {
+    top: 70px;
+    left: 75%;
+  }
+}
+
+@keyframes bounce-across {
+  0%, 100% {
+    top: 50px;
+    left: 0px;
+  }
+  10%, 90% {
+    top: 70px;
+    left: 15%;
+  }
+  20%, 80% {
+    top: 50px;
+    left: 30%;
+  }
+  30%, 70% {
+    top: 70px;
+    left: 45%;
+  }
+  40%, 60% {
+    top: 50px;
+    left: 60%;
+  }
+  50% {
+    top: 70px;
+    left: 75%;
+  }
+}
+@-webkit-keyframes rocking {
+  0% {
+    -webkit-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(-45deg);
+            transform: rotateZ(-45deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+  }
+}
+@keyframes rocking {
+  0% {
+    -webkit-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(-45deg);
+            transform: rotateZ(-45deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+  }
+}
+@-webkit-keyframes twinkle {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+  2% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  5% {
+    -webkit-transform: scale(1.5, 1.5);
+            transform: scale(1.5, 1.5);
+  }
+  8% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+}
+@keyframes twinkle {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+  2% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  5% {
+    -webkit-transform: scale(1.5, 1.5);
+            transform: scale(1.5, 1.5);
+  }
+  8% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
 }

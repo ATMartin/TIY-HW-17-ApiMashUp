@@ -2,6 +2,16 @@ var $appContainer = $('.app-container'),
     $defaultState = $('[data-template-name="user-input"]').text(),
     $loadedState = $('[data-template-name="display-results"]').text(),
     $weatherOverlay = $('[data-template-name="weather-overlay"]').text();
+    $splashState = $('[data-template-name="splash"]').text();
+
+var SplashView = Backbone.View.extend({
+  className: 'splash',
+  template: _.template($splashState),
+  render: function() {
+    this.$el.html(this.template({}));
+    return this;
+  }  
+});
 
 var RequestModel = Backbone.Model.extend({
   url: function() {
@@ -80,7 +90,15 @@ var ForecastView = Backbone.View.extend({
   className: 'weather-overlay',
   template: _.template($weatherOverlay),
   render: function(weather) {
-    this.$el.html(this.template(this.model.attributes)); 
+    this.$el.html(this.template(this.model.attributes));
+    var icon = this.model.get('icon');
+    if (new Date().getHours() > 19 || new Date().getHours() < 8) {
+      $('.legislator-container').append("<h2>It's a bad time for a call, but why not send someone an email?</h2>");  
+    } else if ( ['clear-day', 'partly-cloudy-day'].indexOf(icon) > -1) {
+      $('.legislators-container').append("<h2>It's a beatufiul day to write a letter to your representatives!</h2>");
+    } else if ( ['rain', 'cloudy', 'partly-cloudy-day'].indexOf(icon) > -1) {
+      $('.legislator-container').append("<h2>Indoor activities only for now - why not call one of your reps for a chat?</h2>");  
+    } 
   }
 });
 
@@ -92,6 +110,7 @@ var AppRouter = Backbone.Router.extend({
     this.viewLegislators = new LegislatorView({collection: this.collLegislators});
     this.forecast = new ForecastModel([], {reqModel: this.req});
     this.viewForecast = new ForecastView({model: this.forecast});  
+    this.splashView = new SplashView();
   },
   routes: {
     '':'index',
@@ -99,8 +118,11 @@ var AppRouter = Backbone.Router.extend({
     'test/:zip' : 'test'  
   },
   index: function() {
+    this.splashView.render();
     this.requestView.render();
-    $appContainer.html(this.requestView.$el);
+    $appContainer.html(this.splashView.$el);
+    $appContainer.find('.form-container').html(this.requestView.$el);
+    //$appContainer.html(this.requestView.$el);
   },
   rep: function(zip) {
     var self = this;

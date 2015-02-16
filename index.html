@@ -10,7 +10,13 @@
   <div class="app-container">
       <!-- Backbone views will be appended here! -->
   </div>
-
+  
+  <script type="text/template" data-template-name="splash">
+    <h1>Grumpy, Guvnah?</h1>
+    <div class="form-container"></div>
+    <h4>Enter your Zip Code to find out how the weather's <br> affecting your Congressional Representatives!</h4>
+  </script>
+  
   <script type="text/template" data-template-name="user-input">
     <input class="zip-code" placeholder="Zip Code">
     <!-- <a href="#rep/<%= zip %>">Go!</a> --> 
@@ -20,26 +26,50 @@
       <% _.each(reps, function(rep) { %>
         <div class="legislator <%= rep.get('chamber')%>">
           <img src="http://theunitedstates.io/images/congress/225x275/<%= rep.get('bioguide_id') %>.jpg">
-          <h4><%= rep.get('title') %>. <%= rep.get('first_name') %> <%= rep.get('last_name') %> (<%=rep.get('party')%>)</h4>
-
+          <h3><%= rep.get('title') %>. <%= rep.get('first_name') %> <%= rep.get('last_name') %> (<%=rep.get('party')%>)</h3>
+        <h4><%= rep.get('office') %></h4>
+        <h4><span class="data">Phone:</span> <%= rep.get('phone') %></h4>
+        <h4><a href="<%= rep.get('contact_form') %>">Connect Online</a></h4>
         </div>
       <% }); %>
   </script>
 
   <script type="text/template" data-template-name="weather-overlay">
-    <h1><%= summary %></h1>
-        <% if (['clear-night','partly-cloudy-night'].indexOf(icon) > -1) { %>
+    <h1>Right Now, It's <%= summary %>!</h1>
+        <% if (new Date().getHours() > 19 || new Date().getHours() < 7) { %>
       <svg id="moon">
         <use xlink:href="my.svg#moon"></use>
       </svg>
+      <svg id="star-1">
+        <use class="twinkle-1" xlink:href="my.svg#starburst"></use>
+      </svg>
+      <svg id="star-2">
+        <use class="twinkle-2" xlink:href="my.svg#starburst"></use>
+      </svg>
+      <svg id="star-3">
+        <use class="twinkle-3" xlink:href="my.svg#starburst"></use>
+      </svg>
+      <svg id="star-4">
+        <use class="twinkle-4" xlink:href="my.svg#starburst"></use>
+      </svg>
+      <svg id="star-5">
+        <use class="twinkle-5" xlink:href="my.svg#starburst"></use>
+      </svg>
     <% } %>
     <% if (['clear-day', 'partly-cloudy-day'].indexOf(icon) > -1) { %>
+      
       <svg id="sun">
-        <use xlink:href="my.svg#sun"></use>
+        <use class="rocking" xlink:href="my.svg#sun"></use>
       </svg>
     <% } %>
   <% if (['rain','cloudy','partly-cloudy-day', 'partly-cloudy-night'].indexOf(icon) > -1) { %>
-      <svg id="cloud">
+      <svg class="floating-1 cloud">
+        <use xlink:href="my.svg#cloud"></use>
+      </svg>
+      <svg class="floating-2 cloud">
+        <use xlink:href="my.svg#cloud"></use>
+      </svg>
+      <svg class="floating-3 cloud">
         <use xlink:href="my.svg#cloud"></use>
       </svg>
     <% } %>
